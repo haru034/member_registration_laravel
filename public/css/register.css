@@ -1,0 +1,11 @@
+.register-string {
+    /* h1タグで囲った「会員登録」の文字を画面中央の少し上に配置 */
+    text-align: center;
+    padding-top: 150px;
+}
+
+.register-table {
+    /* 表全体の大きさを変更 */
+    
+}
+

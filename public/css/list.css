@@ -1,0 +1,37 @@
+.user-list-register {
+    /*「>> 登録」ボタンの位置を調整する。*/
+    width: 600px;
+    margin: 0px auto;
+    text-align: right;
+}
+
+.register-button {
+    /*「>> 登録」ボタンの位置を調整する。 */
+    margin-right: 50px;
+    position: relative;
+    top: 230px;
+}
+
+.list-table {
+    /* 表全体の大きさを変更 */
+    width: 600px;
+    height: 300px;
+
+    /* position: absolute;で要素の配置方法を絶対配置にする。*/
+    position: absolute;
+
+    /* topとleftを50%に指定して、要素の左上を中央にする。*/
+    top: 50%; 
+    left: 50%;
+
+    /* transform: translateで要素の表示位置を移動させる。左からx軸(横)、y軸(縦)になる。*/
+    transform: translate(-50%, -50%); /* -50%=左,-50%=下 */
+
+    /* border-collapse: collapse;で隣接するセルのボーダーを重ねて表示する。*/
+    border-collapse: collapse;
+}
+
+.list-table th, td {
+    /* 表の形(枠)を生成する。(隙間を無くして一重線にする) */
+    border: solid 1px black;
+}
