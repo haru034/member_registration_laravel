@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User; // Modelsフォルダ内の、User.phpを使用
+use Illuminate\Support\Facades\Hash; // パスワードを乱数にする設定
 
 class UsersController extends Controller
 {
@@ -36,9 +38,16 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) // 会員登録画面で登録ボタンを押した後にユーザーの新規登録を行う処理
+    public function store(Request $request) // 会員登録画面で登録ボタンを押した後にユーザーの新規登録を行う処理(store=「保存」)
     {
-        return view();
+        $request->validate([ // バリデーション = 入力チェック
+            'name' => 'required', // required = 入力必須
+            'phone' => 'required',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 
+        ]);
+        $user = new User();
+        $user->fill($request->all())->save();
+        return redirect("list"); // リダイレクトの設定(登録ボタンを押したら会員一覧画面に遷移する処理)
     }
 
     /**
@@ -47,7 +56,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) //会員編集画面
+    public function edit($id) // 会員編集画面
     {
         return view();
     }
@@ -59,7 +68,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) // 何の画面の更新?
+    public function update(Request $request, $id)
     {
         //
     }

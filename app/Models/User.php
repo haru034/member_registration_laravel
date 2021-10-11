@@ -1,4 +1,4 @@
-<?php //Modelsの設定を行うファイル
+<?php // Modelsの設定を行うファイル
 
 namespace App\Models;
 

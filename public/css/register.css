@@ -4,8 +4,7 @@
     padding-top: 150px;
 }
 
-.register-table {
-    /* 表全体の大きさを変更 */
-    
+.user-register-form {
+    /* formタグで囲った名前、電話番号、メールアドレスの入力欄と「登録ボタン」を画面中央に配置 */
+    text-align: center;
 }
-
