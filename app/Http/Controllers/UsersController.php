@@ -13,13 +13,14 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() //会員一覧画面
+    public function index()
     {
         // ここにデータベース内(usersテーブル)の中身を引っ張ってくるコードを書く。
         $users = \App\Models\User::all(); // $usersという変数を定義し、その中に入れる値を記述。(今回はユーザーの情報を全て取得)
-        return view('users.list', ['users' => $users]); // 左の$usersに入っている値を右の'users'に入れる
-        // return viewでViewファイルの内容を持ってくる処理ができる。
-        // 'usersフォルダの.list.blade.phpファイル'という意味。
+        return view('users.list', ['users' => $users]); // 会員一覧画面の表示
+        // []内の説明：右の$usersに入っている値を左の'users'に入れる。
+        // 'return view'でViewファイルの内容を持ってくる処理ができる。
+        // ('users.list',の説明：参照型変数'users'の、インスタンスの、list.blade.phpファイル'という意味。
     }
 
     /**
@@ -27,9 +28,9 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() //会員登録画面
+    public function create()
     {
-        return view('users.register');
+        return view('users.register'); // 会員登録画面の表示
     }
 
     /**
@@ -40,8 +41,8 @@ class UsersController extends Controller
      */
     public function store(Request $request) // 会員登録画面で登録ボタンを押した後にユーザーの新規登録を行う処理(store=「保存」)
     {
-        $request->validate([ // バリデーション = 入力チェック
-            'name' => 'required', // required = 入力必須
+        $request->validate([ // バリデーション = 「入力チェック」
+            'name' => 'required', // required = 「入力必須」
             'phone' => 'required',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 
         ]);
@@ -56,9 +57,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) // 会員編集画面
+    public function edit($id)
     {
-        return view();
+        return view('users.edit'); // 会員編集画面の表示
     }
 
     /**
