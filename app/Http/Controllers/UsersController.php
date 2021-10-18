@@ -59,7 +59,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        return view('users.edit'); // 会員編集画面の表示
+        $user = \App\Models\User::find($id); // 各ユーザーの情報を取得する処理
+        // dd($user); 
+        return view('users.edit', ['user' => $user]); // 会員編集画面の表示
     }
 
     /**
@@ -69,7 +71,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) // ユーザーの情報を更新(会員編集画面)
     {
         //
     }
@@ -80,7 +82,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) // ユーザーの情報を削除(会員編集画面)
     {
         //
     }
