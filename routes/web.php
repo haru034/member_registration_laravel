@@ -13,12 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {  // Laravel簡易サーバーを開いた時に最初に表示される画面を表示。まさに'welcome'。
-        return view('welcome');
+Route::get('/', function () {   // Laravel簡易サーバーを開いた時に最初に表示される画面を表示
+        return view('welcome'); // welcome.blade.phpを表示する。
     });
 
-// Auth::routes(); // 左のソースコードをコメントアウトした事によりLaravel UIがルーティングされなくなった。
-
+// Auth::routes(); // 左のソースコードをコメントアウトした事によりLaravel UIが無効になった。
 
 // (関数名：'create') 新規会員登録画面またはフォームを表示させる処理。会員登録は新規で行うので、'create'という意味
 Route::get('/register', [App\Http\Controllers\UsersController::class, 'create'])->name('users.create');
@@ -32,7 +31,7 @@ Route::post('/store', [App\Http\Controllers\UsersController::class, 'store'])->n
 Route::get('/list', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
 
 // (関数名：'edit') 会員編集画面の表示
-Route::get('/edit', [App\Http\Controllers\UsersController::class, 'edit'])->name('users.edit');
+Route::get('/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('users.edit');
 
 // (関数名：'update') 会員編集画面で編集ボタンを押した後にpost形式でユーザー情報の更新を行う処理。
 Route::post('/update', [App\Http\Controllers\UsersController::class, 'update'])->name('users.update');
