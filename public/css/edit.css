@@ -1,0 +1,10 @@
+.edit-string {
+    /* h2タグで囲った「会員編集」の文字を画面中央の少し上に配置 */
+    text-align: center;
+    padding-top: 150px;
+}
+
+.user-edit-form {
+    /* formタグで囲った名前、電話番号、メールアドレスの入力欄と「編集、削除ボタン」を画面中央に配置 */
+    text-align: center;
+}
