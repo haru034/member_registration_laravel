@@ -34,7 +34,7 @@ Route::get('/list', [App\Http\Controllers\UsersController::class, 'index'])->nam
 Route::get('/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('users.edit');
 
 // (関数名：'update') 会員編集画面で編集ボタンを押した後にpost形式でユーザー情報の更新を行う処理。
-Route::post('/update', [App\Http\Controllers\UsersController::class, 'update'])->name('users.update');
+Route::post('/update/{id}', [App\Http\Controllers\UsersController::class, 'update'])->name('users.update');
 
 // (関数名：'destroy') 会員編集画面で削除ボタンを押した際にユーザー情報の削除を行う処理。
 Route::get('/destroy', [App\Http\Controllers\UsersController::class, 'destroy'])->name('users.destroy');    
