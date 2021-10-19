@@ -71,9 +71,21 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) // ユーザーの情報を更新(会員編集画面)
+    public function update(Request $request, $id) // 会員編集画面でユーザーの情報を更新する処理
     {
-        //
+        $request->validate([ // バリデーション = 「入力チェック」
+            'name' => 'required', // required = 「入力必須」
+            'phone' => 'required',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 
+        ]);
+
+        $user = \App\Models\User::find($id); // 各ユーザーの情報を取得する処理
+        // dd($user);
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->save(); // modelのsaveメソッドで更新(update)する。
+        return redirect()->to('users.list'); // リダイレクトして会員一覧画面に遷移
     }
 
     /**
@@ -84,6 +96,6 @@ class UsersController extends Controller
      */
     public function destroy($id) // ユーザーの情報を削除(会員編集画面)
     {
-        //
+        return redirect();
     }
 }
