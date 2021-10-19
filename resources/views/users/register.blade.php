@@ -29,6 +29,11 @@
                 <input type="submit" value="登録" style="width:200px; height:30px; margin-top:20px;">
             </div>
         </form>
+        <div class="error-indication">
+            @foreach ($errors->all() as $error) <!--入力ミスまたは重複している部分(今回はemail)があれば、警告文で知らせてくれる設定-->
+                <li>{{$error}}</li>
+            @endforeach
+        </div>
     </div>
 </body>
 </html>
