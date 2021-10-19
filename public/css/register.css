@@ -8,3 +8,9 @@
     /* formタグで囲った名前、電話番号、メールアドレスの入力欄と「登録ボタン」を画面中央に配置 */
     text-align: center;
 }
+
+.error-indication {
+    /* foreach文で記述したエラーメッセージの文字を画面中央の少し下に配置 */
+    text-align: center;
+    padding-top: 100px;
+}
