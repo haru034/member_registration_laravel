@@ -28,6 +28,9 @@
             <div class="user-edit-form">
                 <input type="submit" value="編集" style="width:200px; height:30px; margin-top:20px;">
             </div>
+        </form>
+        <!--削除ボタンのみ、ルーティング先をdestroyに指定するためにformタグで囲む必要がある。-->
+        <form action="{{ route('users.destroy', $user->id) }}" method="get" enctype="multipart/form-data">
             <div class="user-edit-form">
                 <input type="submit" value="削除" style="width:200px; height:30px; margin-top:20px;">
             </div>
