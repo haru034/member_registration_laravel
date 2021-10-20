@@ -37,4 +37,4 @@ Route::get('/edit/{id}', [App\Http\Controllers\UsersController::class, 'edit'])-
 Route::post('/update/{id}', [App\Http\Controllers\UsersController::class, 'update'])->name('users.update');
 
 // (関数名：'destroy') 会員編集画面で削除ボタンを押した際にユーザー情報の削除を行う処理。
-Route::get('/destroy', [App\Http\Controllers\UsersController::class, 'destroy'])->name('users.destroy');    
+Route::get('/destroy/{id}', [App\Http\Controllers\UsersController::class, 'destroy'])->name('users.destroy');    
