@@ -47,7 +47,7 @@ class UsersController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 
         ]);
         $user = new User();
-        $user->fill($request->all())->save();
+        $user->fill($request->all())->save(); // fillを使い、モデルの全カラムを更新。
         return redirect("list"); // リダイレクトの設定(登録ボタンを押したら会員一覧画面に遷移する処理)
     }
 
@@ -71,7 +71,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) // 会員編集画面でユーザーの情報を更新する処理
+    public function update(Request $request, $id) // ユーザーの情報を更新する処理(会員編集画面)
     {
         $request->validate([ // バリデーション = 「入力チェック」
             'name' => 'required', // required = 「入力必須」
@@ -85,7 +85,7 @@ class UsersController extends Controller
         $user->phone = $request->phone;
         $user->email = $request->email;
         $user->save(); // modelのsaveメソッドで更新(update)する。
-        return redirect()->to('users.list'); // リダイレクトして会員一覧画面に遷移
+        return redirect()->to('list'); // リダイレクトして会員一覧画面に遷移
     }
 
     /**
@@ -94,8 +94,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) // ユーザーの情報を削除(会員編集画面)
+    public function destroy($id) // ユーザーの情報を削除する処理(会員編集画面)
     {
-        return redirect();
+        $user = \App\Models\User::find($id); // 各ユーザーの情報を取得する処理
+        $user->fill([$user->all()])->delete(); // fillを使い、モデルの全カラムを削除(ユーザー情報を全て削除)
+        return redirect()->to('list'); // リダイレクトして会員一覧画面に遷移
     }
 }
