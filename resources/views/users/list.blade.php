@@ -9,15 +9,12 @@
     </head>
     <body>
         <div class="user-list">
-            <div class="user-list-register">
-                <a href="{{url('/register/')}}" class="register-button">>> 登録</a>
-            </div>
             <table class="list-table">
                 <tr>
                     <th>名前</th>
                     <th>電話番号</th>
                     <th>メールアドレス</th>
-                    <th></th>
+                    <th><a href="{{url('/register/')}}">>> 登録</a></th>
                 </tr>
             @foreach ($users as $user) <!--foreach文を使用してユーザーの一覧を表示する-->
                 <tr>

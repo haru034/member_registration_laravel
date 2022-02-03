@@ -5,14 +5,6 @@
     text-align: right;
 }
 
-.register-button {
-    /*「>> 登録」ボタンの位置を調整する。 */
-    margin-right: 50px;
-    /* position: relative; ← relativeにしていると、会員登録した際に一覧画面の増加と共に、なぜか少しずつ位置がずれていってしまう。 */ 
-    position: fixed; /* とりあえず本題はcssの設定では無いので、fixedで「>> 登録」ボタンの位置を固定しておく */
-    top: 230px;
-}
-
 .list-table {
     /* 表全体の大きさを変更 */
     width: 600px;
